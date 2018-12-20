@@ -1,0 +1,22 @@
+{
+  "name": "express-apis-darksky",
+  "version": "1.0.0",
+  "description": "A lab for WDI unit 2",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WDI-SEA/express-apis-darksky.git"
+  },
+  "keywords": [
+    "lab"
+  ],
+  "author": "Brandi Butler",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WDI-SEA/express-apis-darksky/issues"
+  },
+  "homepage": "https://github.com/WDI-SEA/express-apis-darksky#readme"
+}
