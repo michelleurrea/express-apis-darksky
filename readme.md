@@ -24,4 +24,25 @@ You've got a basic Node/Express app going on here. Take a look at it and get fam
 
 #### Views and EJS Layouts
 
-Your layout is already set up and includes a reference to [Material CSS](https://materializecss.com/) by Google. It already has a basic navbar, but the rest is up to you!
+Your layout is already set up and includes a reference to [Material CSS](https://materializecss.com/) by Google. It already has a basic navbar and two ejs files, but the rest is up to you! 
+
+#### Routes
+
+You've got two routes set up. One is a get route that is rendering your home page and the other is a post route that will eventually display the weather results that your user is searching for.
+
+| Method | Path | Purpose |
+| ---- | ------ | -------------------------- |
+| GET | / | Show form where user can enter a location |
+| POST | / | Take users search, get results, and display them |
+
+#### Static Folder and CSS
+
+You've got a static folder you can put static files into. There is already a `style.css` file for custom styles. What folder is your static folder is decided by the following line in `index.js`:
+
+```
+app.use(express.static('static'));
+```
+
+However, in this case, `static` is just the name of the folder. It could be anything, but since we're in the habit of making descriptive and meaningful names, `static` is a solid choice. You may also commonly see this folder called `public`, which is also a solid choice.
+
+
