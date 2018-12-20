@@ -1,6 +1,6 @@
 # Using APIs with Express
 
-In this lab, we're going to combo use an API to get the weather. First, we'll have the user enter a location (a landmark or an address) into a form. We'll take that information and translate it into GPS coordinates, or latitude-longitude using the [Geocoder](https://www.npmjs.com/package/geocoder)] module. Finally, we'll give those coordinates to [DarkSky's API](https://darksky.net/dev/account) to see what the current weather is.
+In this lab, we're going to combo use an API to get the weather. First, we'll have the user enter a location (a landmark or an address) into a form. We'll take that information and translate it into GPS coordinates, or latitude-longitude using the [Simple Geocoder](https://www.npmjs.com/package/simple-geocoder) module. Finally, we'll give those coordinates to [DarkSky's API](https://darksky.net/dev/account) to see what the current weather is.
 
 ## Getting started
 
@@ -69,11 +69,11 @@ REPEAT, console.logs from your backend will print on your terminal, NOT your bro
 
 3. Install the Geocoder node module from npm
 
-`npm install geocoder`
+`npm install simple-geocoder`
 
 4. Require Geocoder in index.js
 
-This is the package we're going to use to figure out latitude-longitude coordinates for the location or address the user typed. Check out the [documentation for geocoder](https://www.npmjs.com/package/geocoder).
+This is the package we're going to use to figure out latitude-longitude coordinates for the location or address the user typed. Check out the [documentation for simple-geocoder](https://www.npmjs.com/package/simple-geocoder).
 
 All we really need from geocoder is the `geocode()` function. We'll feed it the data that the user entered and (hopefully) get back some coordinates!
 
@@ -98,6 +98,8 @@ Seattle
 47.608013,-122.335167
 ```
 
+> It might print out a whole lot of decimals... feel free to round off as appropriate for display purposes.
+
 #### 7. Install the Requests node module from npm
 
 `npm install request`
@@ -120,13 +122,33 @@ This will help you view JSON data in your browser in a much more efficient way. 
 
 Look at the DarkSky forecast data for Seattle. What is the current temperature? How deep in the results object is this located?
 
-#### 11. Use the Request module to make the call to DarkSky
+#### 11. Set up your `.env` file
+
+Create a `.env` file at the top-level if you haven't already. Add your base url from DarkSky (the one that includes your API key). It might look something like this:
+
+```
+DARK_SKY_BASE_URL='https://api.darksky.net/forecast/abc123notmyrealapikey/'
+```
+
+#### 12. Install dotenv from NPM
+
+`npm install dotenv`
+
+This will read the `.env` file for you and make those variables available that we put in there. You can access DARK_SKY_BASE_URL just like a regular constant in your index.js file now. Here's an example:
+
+```
+var urlToCall = process.env.DARK_SKY_BASE_URL + lat + ',' + lng;
+```
+
+#### 13. Use the Request module to make the call to DarkSky
 
 Take that URL you used for DarkSky and use it in the request call. If you don't remember how to do this, refer to the class notes, or just look at the example on [Request's NPM page](https://www.npmjs.com/package/request).
 
 > Remember to add the coordinates you found in step 6 to the end of the DarkSky request URL. This makes it dynamic instead of giving you the same location data over and over.
 
-#### 12. Parse that JSON!
+> Make sure that the request call is INSIDE the geocoder.geocode callback! Don't let asynchronous calls ruin your day!
+
+#### 14. Parse that JSON!
 
 Use the built in function `JSON.parse()` to parse the result data that returns from DarkSky.
 
@@ -142,7 +164,7 @@ request(yourUrl, function(error, response, body) {
 });
 ```
 
-#### 13. Display the current temperature in Fahrenheit on results.ejs
+#### 15. Display the current temperature in Fahrenheit on results.ejs
 
 It's up to you how you want to stylize this part! At minimum you should be passing the current temperature into the results page and displaying something along thee lines of "It is currently 54.2F in Seattle."
 

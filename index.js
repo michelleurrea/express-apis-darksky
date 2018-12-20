@@ -1,7 +1,12 @@
 // Require node modules that you need
 var express = require('express');
+var geocoder = require('simple-geocoder');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
+var request = require('request');
+
+// Include .env variables
+require('dotenv').config();
 
 // Declare your app
 var app = express();
@@ -20,7 +25,28 @@ app.get('/', function(req, res){
 });
 
 app.post('/', function(req, res){
-  res.render('result');
+  geocoder.geocode(req.body.location, function(success, locations){
+    if(!success){
+      return res.render('error');
+    }
+
+    // Passed the error check, now let's store the data
+    var lng = locations.x;
+    var lat = locations.y;
+    var url = process.env.DARK_SKY_BASE_URL + lat + ',' + lng;
+
+    request(url, function(error, response, body) {
+        // Parse the data
+        var result = JSON.parse(body);
+
+        res.render('result', {
+          location: req.body.location,
+          lat: lat,
+          lng: lng,
+          result: result
+        });
+    });
+  });
 });
 
 // Listen on PORT 3000
