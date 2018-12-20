@@ -18,5 +18,10 @@
   "bugs": {
     "url": "https://github.com/WDI-SEA/express-apis-darksky/issues"
   },
-  "homepage": "https://github.com/WDI-SEA/express-apis-darksky#readme"
+  "homepage": "https://github.com/WDI-SEA/express-apis-darksky#readme",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0"
+  }
 }
