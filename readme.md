@@ -1,6 +1,6 @@
 # Using APIs with Express
 
-In this lab, we're going to combo the use of 2 APIs. First, we'll have the user enter a location (a landmark or an address) into a form. We'll take that information and translate it into GPS coordinates, or latitude-longitude. Finally, we'll give those coordinates to [DarkSky](https://darksky.net/dev/account) to see what the current weather is.
+In this lab, we're going to combo use an API to get the weather. First, we'll have the user enter a location (a landmark or an address) into a form. We'll take that information and translate it into GPS coordinates, or latitude-longitude using the [Geocoder](https://www.npmjs.com/package/geocoder)] module. Finally, we'll give those coordinates to [DarkSky's API](https://darksky.net/dev/account) to see what the current weather is.
 
 ## Getting started
 
@@ -60,3 +60,72 @@ If your form is hooked up right, two things should be happening. First, you shou
 ```
 console.log(req.body);
 ```
+
+This should print out an object containing the data you passed in! Note that console.logs from your backend will print on your terminal.
+
+REPEAT, console.logs from your backend will print on your terminal, NOT your browser!
+
+> Not seeing anything? Does your input HTML element have a "name" property?
+
+3. Install the Geocoder node module from npm
+
+`npm install geocoder`
+
+4. Require Geocoder in index.js
+
+This is the package we're going to use to figure out latitude-longitude coordinates for the location or address the user typed. Check out the [documentation for geocoder](https://www.npmjs.com/package/geocoder).
+
+All we really need from geocoder is the `geocode()` function. We'll feed it the data that the user entered and (hopefully) get back some coordinates!
+
+#### 5. Test Geocoder!
+
+Feed the geocoder.geocode function the data that your user types. In the callback function, print out `data` by putting it into a `console.log`. You should see that the data object has a `results` property. Alter your console.log to instead print out `data.results`.
+
+In this case, your user is you! Type in `Seattle, WA` as your test user input address. The expected coordinates are `47.608013,-122.335167`. Do you see them somewhere inside `data.results`?
+
+#### 6. Show off your lat-long!
+
+In your `res.render('results')` call, send on the location and coordinate data via a second argument. Display this on the `results.ejs` page.
+
+> Remember, you can pass data to an EJS file that you render!
+
+`res.render('results', { someData: 'MY DATA!', someNum: 6});`
+
+Check and make sure that your results page is now printing out:
+
+```
+Seattle
+47.608013,-122.335167
+```
+
+#### 7. Install the Requests node module from npm
+
+`npm install request`
+
+#### 8. Sign up for an API Key on [DarkSky.net](https://darksky.net/dev/account)
+
+It's free! 
+
+#### 9. Look at the [DarkSky Example](https://darksky.net/dev/account) 
+
+DarkSky wants your request url in this format (using Seattle as our example):
+
+https://api.darksky.net/forecast/YOURAPIKEY/47.608013,-122.335167
+
+You visit this link and get the data... but it's kind of a mess!
+
+#### 10. Install [JSONView](https://chrome.google.com/webstore/detail/jsonview/chklaanhfefbnpoihckbnefhakgolnmc?hl=en) Chrome Plugin
+
+This will help you view JSON data in your browser in a much more efficient way. A Chrome plugin like JSONView can really, really help make large amounts of JSON data less of a headache. You may have to enable it in your settings, but after that you should be good to start viewing all the JSON data you can handle.
+
+Look at the DarkSky forecast data for Seattle. What is the current temperature? How deep in the results object is this located?
+
+#### 11. Use the Request module to make the call to DarkSky
+
+Take that URL you used for DarkSky and use it in the request call. If you don't remember how to do this, refer to the class notes, or just look at the example on [Request's NPM page](https://www.npmjs.com/package/request).
+
+> Remember to add the coordinates you found in step 6 to the end of the DarkSky request URL. This makes it dynamic instead of giving you the same location data over and over.
+
+#### 12. Parse that JSON!
+
+Use the built in function `JSON.parse()` to parse the result data that returns from DarkSky.
