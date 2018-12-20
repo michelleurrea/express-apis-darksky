@@ -13,7 +13,11 @@ app.use(layouts);
 
 // Declare routes
 app.get('/', function(req, res){
-  res.send('home');
+  res.render('home');
+});
+
+app.post('/', function(req, res){
+  res.render('result');
 });
 
 // Listen on PORT 3000
