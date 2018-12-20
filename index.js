@@ -12,7 +12,7 @@ app.set('view engine', 'ejs');
 // Include any middleware here
 app.use(layouts);
 app.use(express.static('static'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(parser.urlencoded({ extended: false }));
 
 // Declare routes
 app.get('/', function(req, res){
