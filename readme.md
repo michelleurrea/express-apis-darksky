@@ -129,3 +129,21 @@ Take that URL you used for DarkSky and use it in the request call. If you don't 
 #### 12. Parse that JSON!
 
 Use the built in function `JSON.parse()` to parse the result data that returns from DarkSky.
+
+```javascript
+request(yourUrl, function(error, response, body) {
+    // Parse the data 
+    var result = JSON.parse(body);
+
+    // Look at the data
+    console.log(result); 
+
+    // TODO: Do something with that data!
+});
+```
+
+#### 13. Display the current temperature in Fahrenheit on results.ejs
+
+It's up to you how you want to stylize this part! At minimum you should be passing the current temperature into the results page and displaying something along thee lines of "It is currently 54.2F in Seattle."
+
+#### 14. Choose a bonus
