@@ -10,6 +10,7 @@ app.set('view engine', 'ejs');
 
 // Include any middleware here
 app.use(layouts);
+app.use(express.static('static'));
 
 // Declare routes
 app.get('/', function(req, res){
