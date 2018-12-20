@@ -47,13 +47,13 @@ However, in this case, `static` is just the name of the folder. It could be anyt
 
 ## Your Job!
 
-1. Create a form on the home page for the user to enter a location
+#### 1. Create a form on the home page for the user to enter a location
 
 This will include a text input, and a submit button. You're going to use this to submit the location the user enters to your backend post route. 
 
 > Make sure you have the method listed as "POST" on your form tag.
 
-2. Test your form!
+#### 2. Test your form!
 
 If your form is hooked up right, two things should be happening. First, you should be getting to the post route in your `index.js` file. You can tell this is happening if you're rendering the `results.ejs` view. Second, you should be getting the location from your form to the backend route. To test this, add the following line of code to the post route:
 
@@ -67,11 +67,11 @@ REPEAT, console.logs from your backend will print on your terminal, NOT your bro
 
 > Not seeing anything? Does your input HTML element have a "name" property?
 
-3. Install the Geocoder node module from npm
+#### 3. Install the Geocoder node module from npm
 
 `npm install simple-geocoder`
 
-4. Require Geocoder in index.js
+#### 4. Require Geocoder in index.js
 
 This is the package we're going to use to figure out latitude-longitude coordinates for the location or address the user typed. Check out the [documentation for simple-geocoder](https://www.npmjs.com/package/simple-geocoder).
 
