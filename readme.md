@@ -146,4 +146,28 @@ request(yourUrl, function(error, response, body) {
 
 It's up to you how you want to stylize this part! At minimum you should be passing the current temperature into the results page and displaying something along thee lines of "It is currently 54.2F in Seattle."
 
-#### 14. Choose a bonus
+**CONGRATS** 
+You survived the lab!!! 
+
+## Deliverable: Become a Weatherman (or woman!)
+
+You have the current temperature printing out for any location a user can come up with. Cool! But DarkSky gives you so much more data than just that!
+
+Take this app and enhance it to give me a 5-day forecast (that's the `daily` section!) complete with styling, and weather icons.
+
+**Your completed deliverable is:**
+
+* Styled with cards, tables, or rectangular borders that look like a real weather site, like [Accuweather](https://www.accuweather.com/en/us/white-center-wa/98106/weather-forecast/341384) or [Kiro7 News](https://www.kiro7.com/weather-detail?mapID=12404077). (Try out [Materialize cards](https://materializecss.com/cards.html) if you are stylistically inclined!)
+* 5 day forecast, where each day includes
+    * High and Low Predicted Temperatures
+    * Description (the summary field)
+    * Wind speed, in MPH
+
+### BONUS
+
+* An icon based on their recommendation (Try [unicode characters](http://xahlee.info/comp/unicode_weather_symbols.html) for basic weather symbols)
+* Display alerts if there are any! (e.g., high wind warning, etc.)
+
+<img src="https://res.cloudinary.com/briezh/image/upload/v1545288434/Screen_Shot_2018-12-19_at_10.46.50_PM_zjtdcv.png">
+
+
