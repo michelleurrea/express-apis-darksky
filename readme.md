@@ -189,6 +189,7 @@ Take this app and enhance it to give me a 5-day forecast (that's the `daily` sec
 
 * An icon based on their recommendation (Try [unicode characters](http://xahlee.info/comp/unicode_weather_symbols.html) for basic weather symbols)
 * Display alerts if there are any! (e.g., high wind warning, etc.)
+* Interpret the timestamp into day of week
 
 <img src="https://res.cloudinary.com/briezh/image/upload/v1545288434/Screen_Shot_2018-12-19_at_10.46.50_PM_zjtdcv.png">
 
