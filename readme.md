@@ -45,4 +45,18 @@ app.use(express.static('static'));
 
 However, in this case, `static` is just the name of the folder. It could be anything, but since we're in the habit of making descriptive and meaningful names, `static` is a solid choice. You may also commonly see this folder called `public`, which is also a solid choice.
 
+## Your Job!
 
+1. Create a form on the home page for the user to enter a location
+
+This will include a text input, and a submit button. You're going to use this to submit the location the user enters to your backend post route. 
+
+> Make sure you have the method listed as "POST" on your form tag.
+
+2. Test your form!
+
+If your form is hooked up right, two things should be happening. First, you should be getting to the post route in your `index.js` file. You can tell this is happening if you're rendering the `results.ejs` view. Second, you should be getting the location from your form to the backend route. To test this, add the following line of code to the post route:
+
+```
+console.log(req.body);
+```
