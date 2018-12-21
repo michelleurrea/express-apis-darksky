@@ -79,9 +79,9 @@ All we really need from geocoder is the `geocode()` function. We'll feed it the 
 
 #### 5. Test Geocoder!
 
-Feed the geocoder.geocode function the data that your user types. In the callback function, print out `data` by putting it into a `console.log`. You should see that the data object has a `results` property. Alter your console.log to instead print out `data.results`.
+Feed the geocoder.geocode function the data that your user types. In the callback function, print out `locations` by putting it into a `console.log`. You should see that the locations object has a `x` and a `y` property.
 
-In this case, your user is you! Type in `Seattle, WA` as your test user input address. The expected coordinates are `47.608013,-122.335167`. Do you see them somewhere inside `data.results`?
+In this case, your user is you! Type in `Seattle, WA` as your test user input address. The expected coordinates are `47.608013,-122.335167`. Do you see them in `locations`?
 
 #### 6. Show off your lat-long!
 
