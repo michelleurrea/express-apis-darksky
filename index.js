@@ -2,6 +2,7 @@
 var express = require('express');
 var geocoder = require('simple-geocoder');
 var layouts = require('express-ejs-layouts');
+var moment = require('moment');
 var parser = require('body-parser');
 var request = require('request');
 
@@ -18,6 +19,23 @@ app.set('view engine', 'ejs');
 app.use(layouts);
 app.use(express.static('static'));
 app.use(parser.urlencoded({ extended: false }));
+app.use(function(req, res, next) {
+  res.locals.moment = moment;
+  res.locals.icons = {
+    'cloudy': '🌥',
+    'rain': '🌧',
+    'partly-cloudy-day': '🌤',
+    'partly-cloudy-night': '☁',
+    'wind': '🌬',
+    'sun': '🌞',
+    'clear-day': '🌞',
+    'clear-night': '🌙',
+    'snow': '🌨',
+    'fog': '🌫',
+    'thunder': '⛈'
+  }
+  next();
+});
 
 // Declare routes
 app.get('/', function(req, res){

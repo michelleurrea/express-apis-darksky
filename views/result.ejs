@@ -1,3 +1,41 @@
-<h2><%= location %></h2>
-<p><strong>Coordinates:</strong> (<%= lat %>, <%= lng %>)</p>
-<p>Currently: <%= result.currently.temperature %>F</p>
+<div class="row">
+  <div class="col s9">
+    <h2><%= location %></h2>
+    <p><strong>Coordinates:</strong> (<%= lat %>, <%= lng %>)</p>
+  </div>
+  <div class="col s3">
+    <h2>Currently: <%= result.currently.temperature %>F</h2>
+  </div>
+</div>
+<hr>
+<h3 class="header center">Five Day Forecast</h3>
+<p><%= result.daily.summary %></p>
+<div class="container">
+  <div class="row">
+    <% for(var i = 0; i < 5; i++) { %>
+      <div class="col s2 day">
+        <div class="row">
+          <div class="col s12 red">
+            <%= moment.unix(result.daily.data[i].time).format('MMM D') %>
+          </div>
+          <div class="col s12 blue">
+            <%= moment.unix(result.daily.data[i].time).format('ddd') %>
+          </div>
+          <div class="col s12 icon">
+            <%= icons[result.daily.data[i].icon] %>
+          </div>
+          <div class="col s12 red">
+            <%= Math.round(result.daily.data[i].temperatureHigh) %>
+          </div>
+          <div class="col s12 blue">
+            <%= Math.round(result.daily.data[i].temperatureLow) %>
+          </div>
+          <div class="col s12 summary">
+            <%= result.daily.data[i].summary %>
+          </div>
+        </div>
+      </div>
+    <% } %>
+
+  </div>
+</div>
