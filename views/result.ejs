@@ -22,7 +22,7 @@
             <%= moment.unix(result.daily.data[i].time).format('ddd') %>
           </div>
           <div class="col s12 icon">
-            <%= icons[result.daily.data[i].icon] %>
+            <canvas id="icon<%=i%>" height="80" width="80"></canvas>
           </div>
           <div class="col s12 red">
             <%= Math.round(result.daily.data[i].temperatureHigh) %>
@@ -39,3 +39,12 @@
 
   </div>
 </div>
+
+<script>
+  let data = <%- JSON.stringify(result.daily.data) %>;
+  for(var i = 0; i < 5; i++) {
+    let iconType = data[i].icon;
+    skycons.add('icon' + i, iconType);
+  }
+  skycons.play();
+</script>

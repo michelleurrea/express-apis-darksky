@@ -21,19 +21,6 @@ app.use(express.static('static'));
 app.use(parser.urlencoded({ extended: false }));
 app.use(function(req, res, next) {
   res.locals.moment = moment;
-  res.locals.icons = {
-    'cloudy': '🌥',
-    'rain': '🌧',
-    'partly-cloudy-day': '🌤',
-    'partly-cloudy-night': '☁',
-    'wind': '🌬',
-    'sun': '🌞',
-    'clear-day': '🌞',
-    'clear-night': '🌙',
-    'snow': '🌨',
-    'fog': '🌫',
-    'thunder': '⛈'
-  }
   next();
 });
 
